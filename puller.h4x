@@ -1,0 +1,128 @@
+#---STATIC VALUES
+TRUE=1
+FALSE=0
+
+FA_EXT=10
+WI_EXT=20
+SP_EXT=30
+SU_EXT=40
+#---END DEFAULT VALUES
+
+#---CONTROL VALUES
+# Debug arguments
+DEBUG_ARGS=$FALSE
+#---END CONTROL VALUES
+
+#---DEFAULT VALUES
+# Flags
+S_FLAG=$FALSE
+Y_FLAG=$FALSE
+T_FLAG=$FALSE
+G_FLAG=$FALSE
+C_FLAG=$FALSE
+
+# Precedent Flags
+I_FLAG=$FALSE
+H_FLAG=$FALSE
+F_FLAG=$FALSE
+#---END DEFAULT VALUES
+
+# set root web page
+ROOT_PAGE="https://www.sis.hawaii.edu/uhdad/avail.classes?i=MAN"
+
+# set output datafile name
+D_FILE="classes_temp.txt"
+
+# set IFS
+IFS=$'\t\n\0'
+
+# Process args
+while test $# -gt 0
+do
+  case $1 in
+    # Subject
+    "-s")
+      # Toss out the arg
+      shift
+      # Get arg values
+      SUBJECTS=$1
+      # Set flag
+      S_FLAG=$TRUE
+    ;;
+    # Year
+    "-y")
+      # Toss out the arg
+      shift
+      # Get arg values
+      YEARS=$1
+      # Set flag
+      Y_FLAG=$TRUE
+    ;;
+    # Term
+    "-t")
+      # Toss out the arg
+      shift
+      # Get arg values
+      TERMS=$1
+      # Set flag
+      T_FLAG=$TRUE
+    ;;
+    # Gened/Focus
+    "-g")
+      # Toss out the arg
+      shift
+      # Get arg values
+      GENEDS=$1
+      # Set flag
+      G_FLAG=$TRUE
+    ;;
+    # Credits
+    "-c")
+      # Toss out the arg
+      shift
+      # Get arg values
+      CREDITS=$1
+      # Set flag
+      C_FLAG=$TRUE
+    ;;
+
+    # Precedent args
+    # Info
+    "-i")
+      # Set flag
+      I_FLAG=$TRUE
+    ;;
+    # Help
+    "-h")
+      # Set flag
+      H_FLAG=$TRUE
+    ;;
+    # File
+    "-f")
+      # Toss out the arg
+      shift
+      # Get arg values
+      INPUT_FILE=$1
+      # Set flag
+      F_FLAG=$TRUE
+    ;;
+  esac
+  
+  # Toss out the arg
+  shift
+done
+
+#test by outputting flag values
+if [ $DEBUG_ARGS -eq $TRUE ]
+then
+  echo Subjects:  $S_FLAG $SUBJECTS
+  echo Years:  $Y_FLAG $YEARS
+  echo Terms:  $T_FLAG $TERMS
+  echo Geneds:  $G_FLAG $GENEDS
+  echo Credits: $C_FLAG $CREDITS
+  echo
+  echo Precedents...
+  echo Info:  $I_FLAG
+  echo Help:  $H_FLAG
+  echo File:  $F_FLAG  $INPUT_FILE
+fi
