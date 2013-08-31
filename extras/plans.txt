@@ -1,0 +1,33 @@
+How to run:
+
+./puller.h4x -y "2014,2013" -t "FA,WI,SP,SU" -s "ACM,ACC,AS" -g "WI,DH,DA,DS,HAP,OC" -c "1,2,3,4"
+year, term, subject, gened/focus, credits
+
+./puller.h4x -f input.txt
+File input
+
+./puller.h4x -i
+Outputs info about available -s and -g acronyms.
+
+./puller.h4x -h
+Shows a help menu.
+
+input.txt format:
+/---------------------/
+2012 2013 2014
+FA WI SP SU
+ACM ACC AS
+/---------------------/
+
+Default selections:
+Ask for year
+Ask for semester
+All subjects
+All gened/focus
+All credits
+No file
+
+
+Output file:
+Rows of data, each representing a <tr>
+Separate values by delimiter

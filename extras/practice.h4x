@@ -1,0 +1,10 @@
+echo $#
+for ARG in $($@ | grep "
+do
+  echo $ARG |  
+done
+#if $0
+
+#then
+#  echo "$0"
+#fi
